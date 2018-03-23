@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/draw_clear"
+        android:title="Delete"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/draw_brush_normal"
+        android:title="normal" />
+    <item
+        android:id="@+id/draw_brush_circle"
+        android:title="circle" />
+    <item
+        android:id="@+id/draw_color_red"
+        android:title="red" />
+    <item
+        android:id="@+id/draw_color_blue"
+        android:title="blue" />
+    <item
+        android:id="@+id/draw_color_green"
+        android:title="green" />
+</menu>
