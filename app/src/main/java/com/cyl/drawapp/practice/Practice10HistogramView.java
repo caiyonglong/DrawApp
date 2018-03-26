@@ -51,7 +51,7 @@ public class Practice10HistogramView extends View {
         canvas.drawPath(path, paint);
 
         paint.setTextSize(36);
-        canvas.drawText("直方图", width / 2, startY * 7, paint);
+        canvas.drawText("直方图", width / 2 - paint.measureText("直方图") / 2, startY * 7, paint);
 
         for (int i = 1; i < 8; i++) {
             float top = (float) (Math.random() * startY * 5);
@@ -61,7 +61,8 @@ public class Practice10HistogramView extends View {
 
             paint.setColor(Color.parseColor("#ffffff"));
             paint.setTextSize(36);
-            canvas.drawText(title[i - 1], centerX * i + 20, startY * 6 + 36, paint);
+
+            canvas.drawText(title[i - 1], centerX * i + centerX / 2 + 10 - paint.measureText(title[i - 1]) / 2, startY * 6 + 36, paint);
         }
     }
 }
