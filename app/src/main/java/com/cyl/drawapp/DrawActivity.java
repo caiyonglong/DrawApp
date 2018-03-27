@@ -1,37 +1,44 @@
 package com.cyl.drawapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.cyl.drawapp.hencoderpracticedraw1.TestActivity1;
+import com.cyl.drawapp.hencoderpracticedraw2.TestActivity2;
 
 /**
  * Created by D22434 on 2017/10/18.
  */
 
-public class DrawActivity extends AppCompatActivity {
+public class DrawActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TailView2 drawCanvas;
+    Button mBtnDraw1, mBtnDraw2;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-        drawCanvas = (TailView2) findViewById(R.id.draw_canvas);
+        mBtnDraw1 = findViewById(R.id.btn_draw1);
+        mBtnDraw2 = findViewById(R.id.btn_draw2);
+        mBtnDraw1.setOnClickListener(this);
+        mBtnDraw2.setOnClickListener(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.draw_clear) {
-//            drawCanvas.clearCanvas();
+    public void onClick(View v) {
+        Intent intent = null;
+        switch (v.getId()) {
+            case R.id.btn_draw1:
+                intent = new Intent(DrawActivity.this, TestActivity1.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_draw2:
+                intent = new Intent(DrawActivity.this, TestActivity2.class);
+                startActivity(intent);
+                break;
         }
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cyl.drawapp.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.cyl.drawapp.hencoderpracticedraw1.TestActivity1">
 
-    <com.cyl.drawapp.TailView2
-        android:id="@+id/draw_canvas"
+
+    <Button
+        android:id="@+id/btn_draw1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="@string/title_draw1" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_draw2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_draw2" />
+
+
+</LinearLayout>
