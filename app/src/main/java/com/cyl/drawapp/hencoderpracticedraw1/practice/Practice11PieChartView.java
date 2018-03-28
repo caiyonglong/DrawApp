@@ -17,6 +17,7 @@ public class Practice11PieChartView extends View {
     String[] title = new String[]{"Froyo", "Gingerbread", "Ice Cream Sandwich", "Jelly Bean", "Kitkat", "Lollipop", "Marshmallow"};
 
     int[] sweep = new int[]{0, 8, 5, 57, 100, 125, 55};
+
     int[] colors = new int[]{
             Color.parseColor("#8E24AA"),
             Color.parseColor("#8E24AA"),
@@ -48,16 +49,11 @@ public class Practice11PieChartView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
 //        综合练习
 //        练习内容：使用各种 Canvas.drawXXX() 方法画饼图
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-        Log.e("TAG", width + "----" + height);
 
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
         int left = width / 5;
         int top = height / 6;
         int radius = height / 3;
@@ -65,68 +61,45 @@ public class Practice11PieChartView extends View {
         RectF singleRectF = new RectF(left - offset, top - offset, left + radius * 2 - offset, radius * 2 + top - offset);
         startAngle = 0;
 
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setAntiAlias(true);
+
         for (int i = 0; i < sweep.length; i++) {
             Log.e("TAG", i + "--" + startX + "---" + startY);
+            //绘制扇形
+            paint.setColor(colors[i]);
+            paint.setStyle(Paint.Style.FILL); // 填充模式
+
             if (i == 5) {
+                //突出的扇形
                 centerX = left + radius - offset;
                 centerY = top + radius - offset;
-
                 startAngle -= spacing;
-
-                centerAngle = -(startAngle + sweep[i] / 2);
-                sinAngle = (float) Math.sin(centerAngle * 1.0 / 180 * Math.PI);
-                cosAngle = (float) Math.cos(centerAngle * 1.0 / 180 * Math.PI);
-                startY = centerY - (float) (sinAngle * radius) - offset;
-                startX = (float) (cosAngle * radius) + centerX - offset;
-
-                //绘制直线和文字
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setColor(Color.WHITE);
-                path.moveTo(startX, startY);
-                path.rLineTo(cosAngle * offset, -sinAngle * offset);
-                path.rLineTo(cosAngle >= 0 ? 100 : -100, 0);
-                canvas.drawPath(path, paint);
-                paint.setTextSize(18);
-                canvas.drawText(title[i], cosAngle >= 0 ?
-                                startX + cosAngle * 20 + 100 :
-                                startX + cosAngle * 20 - 100 - paint.measureText(title[i]),
-                        startY - sinAngle * offset, paint);
-
-                //绘制突出的扇形
-                paint.setColor(colors[i]);
-                paint.setStyle(Paint.Style.FILL); // 填充模式
                 canvas.drawArc(singleRectF
                         , startAngle, sweep[i], true, paint); // 绘制扇形
-                startAngle += sweep[i] + spacing;
-                continue;
+            } else {
+                centerX = left + radius;
+                centerY = top + radius;
+                canvas.drawArc(rectF, startAngle, sweep[i], true, paint); // 绘制扇形
             }
-            centerX = left + radius;
-            centerY = top + radius;
-            //绘制文字角度
             centerAngle = -(startAngle + sweep[i] / 2);
-
             sinAngle = (float) Math.sin(centerAngle * 1.0 / 180 * Math.PI);
             cosAngle = (float) Math.cos(centerAngle * 1.0 / 180 * Math.PI);
-            startY = centerY - sinAngle * radius;
-            startX = cosAngle * radius + centerX;
+            startY = centerY - (sinAngle * radius);
+            startX = (cosAngle * radius) + centerX;
 
             //绘制直线和文字
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.WHITE);
             path.moveTo(startX, startY);
-            path.rLineTo(cosAngle * offset, -sinAngle * offset);
-            path.rLineTo(cosAngle >= 0 ? 50 : -50, 0);
+            path.rLineTo(cosAngle * 40, -sinAngle * 40);
+            path.rLineTo(cosAngle >= 0 ? 80 : -80, 0);
             canvas.drawPath(path, paint);
             paint.setTextSize(18);
             canvas.drawText(title[i], cosAngle >= 0 ?
-                            startX + cosAngle * offset + 50 :
-                            startX + cosAngle * 20 - 50 - paint.measureText(title[i]),
-                    startY - sinAngle * offset, paint);
-
-            //绘制扇形
-            paint.setStyle(Paint.Style.FILL); // 填充模式
-            paint.setColor(colors[i]);
-            canvas.drawArc(rectF, startAngle, sweep[i], true, paint); // 绘制扇形
+                            startX + cosAngle * 40 + 90 :
+                            startX + cosAngle * 40 - 90 - paint.measureText(title[i]),
+                    startY - sinAngle * 40, paint);
             startAngle += sweep[i] + spacing;
         }
         paint.setTextSize(40);
