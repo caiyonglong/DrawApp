@@ -13,6 +13,8 @@
         <activity android:name=".hencoderpracticedraw2.TestActivity2" />
         <activity android:name=".hencoderpracticedraw3.TestActivity3" />
         <activity android:name=".hencoderpracticedraw4.TestActivity4" />
+        <activity android:name=".hencoderpracticedraw5.TestActivity5" />
+        <activity android:name=".hencoderpracticedraw6.TestActivity6" />
 
         <activity android:name=".DrawActivity">
 

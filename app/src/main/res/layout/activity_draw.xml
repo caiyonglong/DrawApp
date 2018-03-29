@@ -31,5 +31,15 @@
         android:layout_height="wrap_content"
         android:text="@string/title_draw4" />
 
+    <Button
+        android:id="@+id/btn_draw5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_draw5" />
+    <Button
+        android:id="@+id/btn_draw6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_draw6" />
 
 </LinearLayout>
