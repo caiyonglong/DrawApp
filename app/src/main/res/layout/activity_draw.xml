@@ -25,5 +25,11 @@
         android:layout_height="wrap_content"
         android:text="@string/title_draw3" />
 
+    <Button
+        android:id="@+id/btn_draw4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_draw4" />
+
 
 </LinearLayout>
